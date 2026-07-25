@@ -1,0 +1,6 @@
+apiVersion: v2
+name: webapp
+description: Flow control and named templates demo (Chapter 4)
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

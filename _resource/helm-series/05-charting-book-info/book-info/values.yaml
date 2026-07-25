@@ -1,0 +1,37 @@
+# Shared image settings for every Book Info service.
+image:
+  registry: docker.io/istio
+  tag: "1.20.3"
+  pullPolicy: IfNotPresent
+
+# Each entry becomes a ServiceAccount + Deployment + Service.
+#   key         -> the app label (productpage, details, ratings, reviews)
+#   repository  -> the image repository under image.registry
+#   serviceName -> the Kubernetes Service name other services talk to
+#   account     -> the ServiceAccount name
+services:
+  productpage:
+    repository: examples-bookinfo-productpage-v1
+    serviceName: products
+    account: bookinfo-productpage
+    replicas: 1
+    port: 9080
+  details:
+    repository: examples-bookinfo-details-v1
+    serviceName: details
+    account: bookinfo-details
+    replicas: 1
+    port: 9080
+  ratings:
+    repository: examples-bookinfo-ratings-v1
+    serviceName: ratings
+    account: bookinfo-ratings
+    replicas: 1
+    port: 9080
+  reviews:
+    # Book Info ships three review versions; we default to v3 (stars with colour).
+    repository: examples-bookinfo-reviews-v3
+    serviceName: reviews
+    account: bookinfo-reviews
+    replicas: 1
+    port: 9080

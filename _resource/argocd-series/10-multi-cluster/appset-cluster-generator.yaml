@@ -17,9 +17,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         targetRevision: HEAD
-        path: '06-kustomize/book-info/overlays/prod'
+        path: '_resource/argocd-series/06-kustomize/book-info/overlays/prod'
       destination:
         server: '{{ .server }}'
         namespace: book-info

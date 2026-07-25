@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
         - name: productpage
-          image: docker.io/istio/examples-bookinfo-productpage-v1:1.20.1
+          image: docker.io/istio/examples-bookinfo-productpage-v1:1.20.3
           ports:
             - containerPort: 9080
 ```
@@ -161,7 +161,7 @@ For example, pinning the image tag per environment is as simple as:
 # overlays/prod/kustomization.yaml
 images:
   - name: docker.io/istio/examples-bookinfo-productpage-v1
-    newTag: 1.20.1
+    newTag: 1.20.3
 ```
 
 And generating a ConfigMap from literals:
@@ -191,9 +191,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '06-kustomize/book-info/overlays/prod'
+    path: '_resource/argocd-series/06-kustomize/book-info/overlays/prod'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: book-info-prod
@@ -219,15 +219,15 @@ CI-driven image bumps), use the `kustomize` block in the `source`:
 
 ```yaml
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '06-kustomize/book-info/overlays/prod'
+    path: '_resource/argocd-series/06-kustomize/book-info/overlays/prod'
     kustomize:
       images:
-        - docker.io/istio/examples-bookinfo-productpage-v1:1.20.2
+        - docker.io/istio/examples-bookinfo-productpage-v1:1.20.3
 ```
 
-See [argocd-series/06-kustomize](https://github.com/hoalongnatsu/argocd-series/tree/main/06-kustomize)
+See [06-kustomize](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/06-kustomize)
 for the full example.
 
 ## Helm or Kustomize?

@@ -144,7 +144,7 @@ Putting it all together, a sync of the Book Info app might look like this:
 3. **PostSync** — run `smoke-test`; if it fails, the operation is marked failed.
 
 You can find the manifests in
-[argocd-series/07-hooks](https://github.com/hoalongnatsu/argocd-series/tree/main/07-hooks).
+[07-resource-hooks](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/07-resource-hooks).
 
 Resource hooks turn ArgoCD from a "kubectl apply on a loop" into a proper deployment
 pipeline that understands the order your application needs.

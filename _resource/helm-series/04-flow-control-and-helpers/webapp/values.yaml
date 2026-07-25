@@ -1,0 +1,15 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  tag: "1.27"
+
+ingress:
+  enabled: true
+  host: webapp.example.com
+
+extraEnv:
+  - name: FEATURE_A
+    value: "true"
+  - name: FEATURE_B
+    value: "false"

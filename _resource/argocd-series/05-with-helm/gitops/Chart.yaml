@@ -1,11 +1,11 @@
 apiVersion: v2
 name: redis
-description: A Helm chart for redis
+description: A Helm chart that deploys Redis
 
 type: application
-version: 17.11.3
+version: 0.1.0
 
 dependencies:
   - name: redis
-    version: 17.11.3
-    repository: https://charts.bitnami.com/bitnami
+    version: 0.33.0
+    repository: oci://registry-1.docker.io/cloudpirates

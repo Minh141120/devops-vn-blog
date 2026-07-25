@@ -1,0 +1,16 @@
+{{- range $name, $svc := .Values.services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $svc.serviceName }}
+  labels:
+    {{- include "book-info.labels" $ | nindent 4 }}
+    app: {{ $name }}
+spec:
+  ports:
+    - port: {{ $svc.port }}
+      name: http
+  selector:
+    app: {{ $name }}
+---
+{{- end }}

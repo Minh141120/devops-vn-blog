@@ -101,22 +101,22 @@ namely, using Helm.
 ## Helm
 
 We can package all the resources into a single package and use Helm to manage them.
-For popular technologies like Redis, Postgres, ClickHouse, and so on, the community
-provides a lot of support, and we can use those instead of writing our own, except in
-special cases. Here's an example of deploying Redis with Helm:
+For popular software the community publishes ready-made charts we can reuse instead of
+writing our own. Here we'll deploy Redis using the community
+[CloudPirates Redis chart](https://artifacthub.io/packages/helm/cloudpirates-redis/redis),
+which is distributed as an OCI chart:
 
 ```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo update
-helm install my-redis bitnami/redis \
-  --set password=secretpassword \
-  --set replication.enabled=true \
-  --set replication.slaveCount=1
+helm install my-redis oci://registry-1.docker.io/cloudpirates/redis \
+  --version 0.33.0 \
+  --set architecture=replication \
+  --set replicaCount=3 \
+  --set sentinel.enabled=true
 ```
 
-Each time we need to deploy a new cluster, we just run the command above. However,
-deploying Redis manually through the Helm CLI can make it hard to manage changes.
-ArgoCD supports deploying Helm through the use of an Application.
+Each time we need a new Redis cluster, we just run the command above. However, running
+Helm manually from the CLI makes changes hard to track. ArgoCD supports deploying Helm
+through the use of an Application.
 
 ## ArgoCD with Helm
 
@@ -131,20 +131,21 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
+    repoURL: registry-1.docker.io/cloudpirates
     chart: redis
-    targetRevision: 17.11.3  # Use the desired version of the chart
+    targetRevision: 0.33.0  # Use the desired version of the chart
     helm:
       releaseName: redis
       parameters:
-        - name: password
-          value: "your-redis-password"  # Set your Redis password here
-        - name: replication.enabled
+        - name: architecture
+          value: replication
+        - name: replicaCount
+          value: "3"
+        - name: sentinel.enabled
           value: "true"
-        - name: replication.slaveCount
-          value: "2"  # Number of replicas you want to create
   destination:
     server: 'https://kubernetes.default.svc'
+    namespace: default
   syncPolicy:
     automated:
       prune: true
@@ -169,9 +170,9 @@ In the UI you'll see the Application for Redis being created:
 
 ![Redis creating](/assets/images/posts/argocd-05-with-helm/redis-creating.png)
 
-Wait for Redis to be created successfully:
+Wait for Redis to sync successfully:
 
-![Redis created](/assets/images/posts/argocd-05-with-helm/redis-created.png)
+![Redis synced](/assets/images/posts/argocd-05-with-helm/redis-created.png)
 
 ## GitOps
 
@@ -185,33 +186,33 @@ repository with the two files below, then create an Argo Application for that re
 └── values.yaml
 ```
 
-Contents of `Chart.yaml`:
+Contents of `Chart.yaml` — an umbrella chart that depends on the Redis chart:
 
 ```yaml
 apiVersion: v2
 name: redis
-description: A Helm chart for redis
+description: A Helm chart that deploys Redis
 
 type: application
-version: 17.11.3
+version: 0.1.0
 
 dependencies:
   - name: redis
-    version: 17.11.3
-    repository: https://charts.bitnami.com/bitnami
+    version: 0.33.0
+    repository: oci://registry-1.docker.io/cloudpirates
 ```
 
 Contents of `values.yaml`:
 
 ```yaml
 redis:
-  password: your-redis-password
-  replication:
+  architecture: replication
+  replicaCount: 3
+  sentinel:
     enabled: true
-    slaveCount: 2
 ```
 
-See [argocd-series/05-gitops/gitops](https://github.com/hoalongnatsu/argocd-series/tree/main/05-gitops/gitops).
+See [05-with-helm/gitops](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/05-with-helm/gitops).
 Create an `app.yaml` file to declare the Argo Application:
 
 ```yaml
@@ -223,9 +224,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '05-gitops/gitops'
+    path: '_resource/argocd-series/05-with-helm/gitops'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

@@ -1,0 +1,10 @@
+apiVersion: v2
+name: book-info
+description: A Helm chart for the Book Info microservices sample (Helm 4)
+type: application
+
+# The version of this chart itself (SemVer).
+version: 0.1.0
+
+# The version of the app being deployed — matches the Istio Book Info images.
+appVersion: "1.20.3"

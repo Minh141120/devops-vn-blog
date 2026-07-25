@@ -16,7 +16,8 @@ ArgoCD to a private Git repo.
 ## Preparation
 
 Create a private GitHub repo to hold the configuration for the
-[Book Info microservice](https://github.com/hoalongnatsu/argocd-series). To connect
+[Book Info microservice](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/02-core-concepts/bookinfo)
+(copy the manifests into your own private repo). To connect
 ArgoCD to a private repo, we use Repositories. In the ArgoCD UI, go to
 Settings → Repositories:
 
@@ -63,7 +64,7 @@ successfully.
 Run:
 
 ```bash
-argocd repo add https://github.com/hoalongnatsu/private-microservice-book-info --username git --password <your-access-token>
+argocd repo add https://github.com/your-org/private-microservice-book-info --username git --password <your-access-token>
 ```
 
 ## Creating Repositories via a Secret
@@ -89,7 +90,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   type: git
-  url: https://github.com/hoalongnatsu/private-microservice-book-info
+  url: https://github.com/your-org/private-microservice-book-info
   password: git
   username: <your-access-token>
 ```
@@ -144,9 +145,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/private-microservice-book-info'
+    repoURL: 'https://github.com/your-org/private-microservice-book-info'
     targetRevision: HEAD
-    path: '01/details'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/details'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -163,9 +164,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/private-microservice-book-info'
+    repoURL: 'https://github.com/your-org/private-microservice-book-info'
     targetRevision: HEAD
-    path: '01/products'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/products'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -182,9 +183,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/private-microservice-book-info'
+    repoURL: 'https://github.com/your-org/private-microservice-book-info'
     targetRevision: HEAD
-    path: '01/ratings'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/ratings'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -201,9 +202,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/private-microservice-book-info'
+    repoURL: 'https://github.com/your-org/private-microservice-book-info'
     targetRevision: HEAD
-    path: '01/reviews'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/reviews'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

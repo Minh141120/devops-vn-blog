@@ -1,0 +1,9 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  tag: ""          # falls back to .Chart.AppVersion via the `default` function
+  pullPolicy: IfNotPresent
+
+config:
+  logLevel: info

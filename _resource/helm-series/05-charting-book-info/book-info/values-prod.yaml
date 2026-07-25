@@ -1,0 +1,11 @@
+# Production overrides — more replicas, coloured reviews (v3).
+services:
+  productpage:
+    replicas: 3
+  details:
+    replicas: 2
+  ratings:
+    replicas: 2
+  reviews:
+    repository: examples-bookinfo-reviews-v3
+    replicas: 3

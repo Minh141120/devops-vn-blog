@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '05-gitops/gitops'
+    path: '_resource/argocd-series/05-with-helm/gitops'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

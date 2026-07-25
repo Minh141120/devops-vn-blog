@@ -41,8 +41,8 @@ defining the Application in a YAML file. With the CLI, run:
 
 ```bash
 argocd app create bookinfo \
---repo https://github.com/hoalongnatsu/istio-microservice-book-info \
---path . \
+--repo https://github.com/VersusControl/devops-vn-blog \
+--path _resource/argocd-series/01-getting-started/bookinfo \
 --dest-server https://kubernetes.default.svc \
 --dest-namespace default
 ```
@@ -62,9 +62,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/istio-microservice-book-info.git'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: .
+    path: '_resource/argocd-series/01-getting-started/bookinfo'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -92,8 +92,8 @@ created a single Application to sync the entire microservice:
 
 Deploying everything in one Application slows the sync process and makes it hard to
 update individual services. So we should restructure by creating a separate
-Application for each service. See the repo:
-[argocd-series/01](https://github.com/hoalongnatsu/argocd-series/tree/main/01).
+Application for each service. See the manifests:
+[02-core-concepts/bookinfo](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/02-core-concepts/bookinfo).
 
 ```
 .
@@ -119,9 +119,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/details'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/details'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -138,9 +138,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/products'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/products'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -157,9 +157,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/ratings'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/ratings'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -176,9 +176,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/reviews'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/reviews'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

@@ -76,9 +76,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '06-kustomize/book-info/overlays/prod'
+    path: '_resource/argocd-series/06-kustomize/book-info/overlays/prod'
   destination:
     name: prod            # the cluster we registered
     namespace: book-info
@@ -114,9 +114,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         targetRevision: HEAD
-        path: '06-kustomize/book-info/overlays/prod'
+        path: '_resource/argocd-series/06-kustomize/book-info/overlays/prod'
       destination:
         server: '{% raw %}{{ .server }}{% endraw %}'
         namespace: book-info
@@ -174,7 +174,7 @@ metadata:
   namespaces each team can deploy to.
 
 Full manifests are in
-[argocd-series/10-multi-cluster](https://github.com/hoalongnatsu/argocd-series/tree/main/10-multi-cluster).
+[10-multi-cluster](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/10-multi-cluster).
 
 With one ArgoCD managing many clusters, the last thing we need is proper access control
 for the humans logging in. In the final post we'll set up **SSO with Keycloak**.

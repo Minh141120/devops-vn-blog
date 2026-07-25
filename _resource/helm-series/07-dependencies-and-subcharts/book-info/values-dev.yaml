@@ -1,0 +1,3 @@
+# Dev turns the Redis dependency off (paired with `condition: redis.enabled`).
+redis:
+  enabled: false

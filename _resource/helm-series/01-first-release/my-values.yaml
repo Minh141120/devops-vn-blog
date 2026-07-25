@@ -1,0 +1,6 @@
+# Chapter 1 — example values file for the CloudPirates Redis chart.
+# helm install my-redis oci://registry-1.docker.io/cloudpirates/redis --version 0.33.0 -f my-values.yaml
+architecture: replication
+replicaCount: 3
+auth:
+  enabled: true

@@ -1,0 +1,7 @@
+# Values passed to the Redis subchart live under a key named after the chart.
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: true
+    password: "change-me"

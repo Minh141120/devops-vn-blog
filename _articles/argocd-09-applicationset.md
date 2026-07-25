@@ -54,9 +54,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         targetRevision: HEAD
-        path: '06-kustomize/book-info/overlays/{% raw %}{{ .env }}{% endraw %}'
+        path: '_resource/argocd-series/06-kustomize/book-info/overlays/{% raw %}{{ .env }}{% endraw %}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{% raw %}{{ .namespace }}{% endraw %}'
@@ -91,7 +91,7 @@ spec:
   goTemplate: true
   generators:
     - git:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         revision: HEAD
         directories:
           - path: 'apps/*'
@@ -101,7 +101,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         targetRevision: HEAD
         path: '{% raw %}{{ .path.path }}{% endraw %}'
       destination:
@@ -150,7 +150,7 @@ directory generator (the apps) with a list generator (the environments):
     - matrix:
         generators:
           - git:
-              repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+              repoURL: 'https://github.com/VersusControl/devops-vn-blog'
               revision: HEAD
               directories:
                 - path: 'apps/*'
@@ -177,7 +177,7 @@ spec:
 Once you trust it, switch to the default so removed entries are pruned.
 
 The examples live in
-[argocd-series/09-applicationset](https://github.com/hoalongnatsu/argocd-series/tree/main/09-applicationset).
+[09-applicationset](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/09-applicationset).
 
 ApplicationSet turns dozens of near-identical Applications into a single declarative
 resource. In the next post we'll use its **Cluster generator** to deploy across many

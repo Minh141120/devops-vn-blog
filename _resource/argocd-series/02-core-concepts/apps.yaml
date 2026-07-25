@@ -7,9 +7,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/details'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/details'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -26,9 +26,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/products'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/products'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -45,9 +45,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/ratings'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/ratings'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -64,9 +64,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: '01/reviews'
+    path: '_resource/argocd-series/02-core-concepts/bookinfo/reviews'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

@@ -10,9 +10,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/hoalongnatsu/istio-microservice-book-info.git'
+    repoURL: 'https://github.com/VersusControl/devops-vn-blog'
     targetRevision: HEAD
-    path: .
+    path: '_resource/argocd-series/01-getting-started/bookinfo'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

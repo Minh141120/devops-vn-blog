@@ -148,7 +148,7 @@ delete and settings actions disabled.
   touch.
 
 The manifests are in
-[argocd-series/11-sso-keycloak](https://github.com/hoalongnatsu/argocd-series/tree/main/11-sso-keycloak).
+[11-sso-keycloak](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/11-sso-keycloak).
 
 ## Wrapping up the series
 

@@ -9,7 +9,7 @@ spec:
   goTemplate: true
   generators:
     - git:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         revision: HEAD
         directories:
           - path: 'apps/*'
@@ -19,7 +19,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/hoalongnatsu/argocd-series'
+        repoURL: 'https://github.com/VersusControl/devops-vn-blog'
         targetRevision: HEAD
         path: '{{ .path.path }}'
       destination:

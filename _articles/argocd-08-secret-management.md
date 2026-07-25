@@ -163,7 +163,7 @@ Whatever you choose, the golden rule holds: **plaintext secrets never touch Git.
 encrypted blobs or references do.
 
 The example manifests are in
-[argocd-series/08-secrets](https://github.com/hoalongnatsu/argocd-series/tree/main/08-secrets).
+[08-secret-management](https://github.com/VersusControl/devops-vn-blog/tree/main/_resource/argocd-series/08-secret-management).
 
 In the next post, we'll stop managing Applications one by one and generate them in bulk
 with **ApplicationSet**.

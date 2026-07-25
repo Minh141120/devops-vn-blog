@@ -104,10 +104,11 @@ the sync policy to Automatic. Leave the SYNC OPTIONS at their defaults for now.
 ![App general settings](/assets/images/posts/argocd-01-getting-started/app-general.png)
 
 The **Repository URL** field is where we connect to Git, which holds the Kubernetes
-resource files we want to deploy. Use my repo
-[istio-microservice-book-info](https://github.com/hoalongnatsu/istio-microservice-book-info).
-It's a public repo that anyone can access; in the next post I'll show how to connect
-to a private repo. For the Path, enter `.` for the root directory:
+resource files we want to deploy. Use this repo
+[devops-vn-blog](https://github.com/VersusControl/devops-vn-blog) — the Book Info
+manifests live under `_resource/argocd-series/01-getting-started/bookinfo`. It's a
+public repo that anyone can access; in the next post I'll show how to connect
+to a private repo. For the Path, enter `_resource/argocd-series/01-getting-started/bookinfo`:
 
 ![Repository URL and path](/assets/images/posts/argocd-01-getting-started/repo-path.png)
 

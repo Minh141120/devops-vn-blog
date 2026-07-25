@@ -7,8 +7,8 @@ Each folder maps to a chapter of the series:
 
 | Chapter | Folder | Topic |
 |--------|--------|-------|
-| 1 | `01-getting-started` | First ArgoCD `Application` for Book Info |
-| 2 | `02-core-concepts` | Application, per-service apps, AppProject |
+| 1 | `01-getting-started` | First ArgoCD `Application` for Book Info (manifests under `bookinfo/`) |
+| 2 | `02-core-concepts` | Application, per-service apps (under `bookinfo/`), AppProject |
 | 3 | `03-private-repo` | Connecting a private repo (Secret / ExternalSecret) |
 | 5 | `05-with-helm` | Deploying Helm charts with ArgoCD |
 | 6 | `06-kustomize` | Base + overlays with Kustomize |
@@ -18,9 +18,11 @@ Each folder maps to a chapter of the series:
 | 10 | `10-multi-cluster` | Deploying across many clusters |
 | 11 | `11-sso-keycloak` | SSO with Keycloak (OIDC) + RBAC |
 
-> These manifests reference example repositories and placeholder values
-> (`<ACCOUNT_ID>`, `<token>`, cluster URLs, etc.). Replace them with your own
-> before applying.
+> The `Application` manifests point at this blog's own repo
+> (`https://github.com/VersusControl/devops-vn-blog`) using the
+> `_resource/argocd-series/...` paths, so the series is fully self-contained — no
+> external repositories are required. Placeholder values (`<ACCOUNT_ID>`, `<token>`,
+> `your-org`, cluster URLs, etc.) still need to be replaced with your own before applying.
 
 ```bash
 git clone https://github.com/VersusControl/devops-vn-blog.git

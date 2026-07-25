@@ -1,4 +1,4 @@
-# Chapter 5 — deploy Redis directly from the Bitnami Helm chart with an Application.
+# Chapter 5 — deploy Redis directly from the CloudPirates OCI Helm chart with an Application.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -7,17 +7,18 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
+    repoURL: registry-1.docker.io/cloudpirates
     chart: redis
-    targetRevision: 17.11.3
+    targetRevision: 0.33.0
     helm:
       releaseName: redis
       parameters:
-        - name: password
-          value: "your-redis-password"
-        - name: replication.enabled
+        - name: architecture
+          value: replication
+        - name: replicaCount
+          value: "3"
+        - name: sentinel.enabled
           value: "true"
-        - name: replication.slaveCount
-          value: "2"
   destination:
     server: 'https://kubernetes.default.svc'
+    namespace: default
